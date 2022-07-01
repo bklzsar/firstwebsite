@@ -1,0 +1,53 @@
+<style>
+  .nav-link:hover {
+
+    color:greenyellow;
+    opacity: 0.8;
+    border-radius: 2px;
+          
+  }
+
+
+</style>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="/">Burak Optik</a>
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/about">Hakkımızda <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/articles">Makaleler <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if session['admin_mode'] %}
+          <li class="nav-item active">
+            <a href="/dashboard" class="nav-link">Kontrol Paneli</a>
+          </li>
+        {% endif %}
+        {% if session['logged_in'] %}
+          <li class="nav-item active">
+            <a href="/logout" class="nav-link">Çıkış yap</a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a href="/register" class="nav-link">Kayıt ol</a>
+          </li>
+          <li class="nav-item active">
+            <a href="/login" class="nav-link">Giriş yap</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+

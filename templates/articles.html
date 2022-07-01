@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<style>
+
+    form .j {
+        position:relative;
+        bottom: 5px;
+        width: 75px;
+        box-sizing: border-box;
+    }
+
+    form .l {
+        height: 45px;
+    }
+
+    
+</style>
+
+<h3>Makaleler</h3>
+<hr>
+
+{% if articles %}
+
+<form action="/search" method="post" >
+    <input class="form-control-lg form-control-borderless l " name = "keyword" type="search" placeholder="Makale ara">
+    <button class="btn btn-lg btn-danger j l" type="submit">Ara</button>  
+</form>
+
+    <ul class="list-group">
+        {% for article in articles  %}
+
+            <li class="list-group-item"><a href="/article/{{article.id}}">{{article.title}}</a></li>
+        
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="alert alert-danger">Bu blokta henüz makale bulunmuyor.</p>
+{% endif %}
+
+
+{% endblock body %}
